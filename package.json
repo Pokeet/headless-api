@@ -1,0 +1,21 @@
+{
+  "name": "headless-api",
+  "version": "0.0.1",
+  "description": "a headless cms",
+  "author": "TBAUDON <thomas.baudon@pokeet.fr>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "nodemon": "^1.12.0"
+  },
+  "scripts": {
+    "start": "nodemon ./src/main.js --exec babel-node"
+  }
+}

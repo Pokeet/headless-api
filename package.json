@@ -6,7 +6,9 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.2",
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "express-validator": "^4.1.1",
+    "mongoose": "^4.11.10"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -17,6 +19,8 @@
   },
   "scripts": {
     "start": "nodemon ./src/main.js --exec babel-node",
-    "test": "mocha"
+    "startDB": "mongod",
+    "test": "mocha",
+    "build": "babel src --out-dir bin"
   }
 }

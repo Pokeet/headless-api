@@ -1,11 +1,11 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import expressValidator from 'express-validator';
-
+import cors from 'cors';
 import mongoose from 'mongoose';
+import passport from 'passport';
 
 import config from '../config';
-
 import routes from './routes';
 
 const app = express();
@@ -24,15 +24,19 @@ const db = mongoose.connection;
 
 // middlewares
 
+app.use(cors({ origin: '*' }));
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false,
-}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(expressValidator({
   customValidators: {
   },
 }));
+
+app.use(passport.initialize());
+
+config.passport(passport);
 
 // routing
 

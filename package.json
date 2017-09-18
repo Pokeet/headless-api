@@ -5,10 +5,15 @@
   "author": "TBAUDON <thomas.baudon@pokeet.fr>",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
     "express": "^4.15.4",
     "express-validator": "^4.1.1",
-    "mongoose": "^4.11.10"
+    "jsonwebtoken": "^8.0.1",
+    "mongoose": "^4.11.10",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -21,6 +26,6 @@
     "start": "nodemon ./src/main.js --exec babel-node",
     "startDB": "mongod",
     "test": "mocha",
-    "build": "babel src --out-dir bin"
+    "babel": "babel src --out-dir ./www"
   }
 }

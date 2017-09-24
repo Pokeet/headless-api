@@ -25,7 +25,7 @@
   "scripts": {
     "start": "nodemon ./src/main.js --exec babel-node",
     "startDB": "mongod",
-    "test": "mocha",
+    "test": "mocha --compilers js:babel-core/register",
     "babel": "babel src --out-dir ./www"
   }
 }

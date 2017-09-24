@@ -1,6 +1,11 @@
 language: node_js
 node_js:
   - "node"
+services: 
+  - mongodb
+before_script:
+  - sleep 10
 script:
+  - mv config-sample.js config.js
   - npm run test
   - npm run babel

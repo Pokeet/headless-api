@@ -6,6 +6,7 @@ module.exports = {
 
   serverSettings: {
     port: '3000',
+    testingPort: '3300',
   },
 
   apiVersion: 1,

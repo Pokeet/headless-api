@@ -19,13 +19,14 @@
     "babel-cli": "^6.26.0",
     "babel-preset-latest": "^6.24.1",
     "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
     "mocha": "^3.5.0",
     "nodemon": "^1.12.0"
   },
   "scripts": {
     "start": "nodemon ./src/main.js --exec babel-node",
     "startDB": "mongod",
-    "test": "mocha --compilers js:babel-core/register",
+    "test": "mocha --compilers js:babel-core/register -r ./test/initTests.js",
     "babel": "babel src --out-dir ./www"
   }
 }

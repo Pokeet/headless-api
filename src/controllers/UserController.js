@@ -1,6 +1,5 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
-import passport from 'passport';
 
 import config from '../../config';
 import User from '../models/User';

@@ -13,7 +13,7 @@ const params = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('JWT'),
 };
 
-module.exports =  {
+module.exports = {
 
   init: function () {
     passport.use(new Strategy(params, (payload, done) => {
@@ -39,6 +39,6 @@ module.exports =  {
     return passport.authenticate('jwt', {
       session: config.jwtSession,
     });
-  }
+  },
 
 };

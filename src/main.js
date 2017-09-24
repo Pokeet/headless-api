@@ -2,25 +2,17 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import expressValidator from 'express-validator';
 import cors from 'cors';
-import mongoose from 'mongoose';
 
 import config from '../config';
 import routes from './routes';
 import Auth from './middlewares/Auth';
+import Database from './middlewares/Database';
 
 const app = express();
 
-mongoose.Promise = global.Promise;
+// database init
 
-// connect to db
-
-const uri = `mongodb://${config.dbSettings.host}/${config.dbSettings.name}`;
-
-mongoose.connect(uri)
-  .then(() => console.log('Connected to db with success'))
-  .catch(err => console.error(err));
-
-const db = mongoose.connection;
+Database.init();
 
 // middlewares
 
@@ -66,9 +58,9 @@ app.use((err, req, res) => {
   });
 });
 
-let port = config.serverSettings.port;
+let { port } = config.serverSettings;
 
-if (process.env.NODE_ENV == 'testing') {
+if (process.env.NODE_ENV === 'testing') {
   port = config.serverSettings.testingPort;
 }
 

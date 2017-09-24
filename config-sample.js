@@ -4,6 +4,10 @@ module.exports = {
     name: 'headlessCMS',
   },
 
+  serverSettings: {
+    port: '3000',
+  },
+
   apiVersion: 1,
 
   appSecret: 'addyoursecretappsalthere',

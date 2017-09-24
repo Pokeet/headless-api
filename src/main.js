@@ -66,6 +66,12 @@ app.use((err, req, res) => {
   });
 });
 
-app.listen(3000);
+let port = config.serverSettings.port;
+
+if (process.env.NODE_ENV == 'testing') {
+  port = config.serverSettings.testingPort;
+}
+
+app.listen(port);
 
 module.exports = app;

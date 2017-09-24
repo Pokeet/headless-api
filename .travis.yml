@@ -4,8 +4,7 @@ node_js:
 services: 
   - mongodb
 before_script:
-  - sleep 10
-script:
   - mv config-sample.js config.js
+script:
   - npm run test
   - npm run babel

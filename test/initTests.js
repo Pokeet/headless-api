@@ -1,5 +1,3 @@
-import Database from '../src/middlewares/Database';
-
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 

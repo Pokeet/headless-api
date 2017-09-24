@@ -1,0 +1,55 @@
+Arguments: 
+  E:\Outils\Dev\nodejs\node.exe C:\Users\ThomasB\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add bcrypt-nodejs
+
+PATH: 
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\ThomasB\bin;C:\Program Files\Docker\Docker\Resources\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;E:\Outils\Dev\Android\platform-tools;E:\Outils\Dev\Ant\bin;C:\Program Files\Microsoft SQL Server\110\Tools\Binn;E:\Outils\Dev\Java\jdk-1.8.0\bin\;E:\Outils\Dev\Perforce;E:\Outils\video\ffmpeg\bin;E:\Outils\Dev\Git\cmd;E:\Outils\Dev\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Users\ThomasB\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;E:\Outils\Dev\Microsoft Visual Studio 14.0\VC\bin;E:\Outils\Dev\Haxe\haxe;E:\Outils\Dev\Haxe\neko;C:\Program Files (x86)\GtkSharp\2.12\bin;E:\Outils\Dev\Emscripten\emscripten\1.35.0;E:\Outils\Dev\Emscripten;E:\Outils\Dev\Emscripten\clang\e1.35.0_64bit;E:\Outils\Dev\Emscripten\node\0.12.2_64bit;E:\Outils\Dev\Emscripten\python\2.7.5.3_64bit;E:\Outils\Dev\Emscripten\java\7.45_64bit\bin;E:\Outils\Dev\Emscripten\crunch\1.03;E:\Outils\Dev\Emscripten\mingw\4.6.2_32bit;E:\Outils\Web\wamp64\bin\php\php7.0.10;C:\ProgramData\ComposerSetup\bin;C:\Users\ThomasB\AppData\Roaming\npm;E:\Outils\Dev\Vagrant\bin;E:\Outils\Web\ansible;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files (x86)\Microsoft Emulator Manager\1.0;C:\Program Files\Git\cmd;E:\Outils\Dev\Ruby23-x64\bin;E:\Outils\Dev\TortoiseGit\bin;E:\Outils\Dev\Android\tools;E:\Outils\Dev\cmder;E:\Outils\Dev\DrupalConsole\vendor\drupal\console\bin;E:\Outils\Dev\Brackets\command;E:\Outils\Dev\nodejs;C:\Program Files (x86)\MSBuild\14.0\Bin;C:\Users\ThomasB\AppData\Local\atom\bin;E:\Outils\Web\mongo\bin;E:\Outils\Dev\Python;C:\Users\ThomasB\AppData\Roaming\Composer\vendor\bin;C:\Users\ThomasB\AppData\Local\Microsoft\WindowsApps;C:\Users\ThomasB\AppData\Roaming\npm;E:\Outils\Dev\Microsoft VS Code\bin
+
+Yarn version: 
+  0.24.5
+
+Node version: 
+  8.1.3
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "headless-api",
+    "version": "0.0.1",
+    "description": "a headless cms",
+    "author": "TBAUDON <thomas.baudon@pokeet.fr>",
+    "license": "MIT",
+    "dependencies": {
+      "body-parser": "^1.17.2",
+      "cors": "^2.8.4",
+      "express": "^4.15.4",
+      "express-validator": "^4.1.1",
+      "jsonwebtoken": "^8.0.1",
+      "mongoose": "^4.11.10",
+      "passport": "^0.4.0",
+      "passport-jwt": "^3.0.0"
+    },
+    "devDependencies": {
+      "babel-cli": "^6.26.0",
+      "babel-preset-latest": "^6.24.1",
+      "chai": "^4.1.2",
+      "mocha": "^3.5.0",
+      "nodemon": "^1.12.0"
+    },
+    "scripts": {
+      "start": "nodemon ./src/main.js --exec babel-node",
+      "startDB": "mongod",
+      "test": "mocha",
+      "babel": "babel src --out-dir ./www"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'E:\Workspace\Projets\headless-api\node_modules\bcrypt\lib\binding\bcrypt_lib.node'

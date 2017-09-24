@@ -5,6 +5,8 @@ import passport from 'passport';
 import config from '../../config';
 import User from '../models/User';
 
+import Auth from '../middlewares/Auth';
+
 const router = express.Router();
 
 router.post('/', (req, res) => {
@@ -37,7 +39,6 @@ router.post('/authenticate', (req, res) => {
       user.comparePassword(req.body.password, (err2, isMatch) => {
         if (isMatch && !err2) {
           // create the token
-          console.log(user);
           const token = jwt.sign({ user }, config.appSecret, {
             expiresIn: 10080,
           });
@@ -50,10 +51,8 @@ router.post('/authenticate', (req, res) => {
   });
 });
 
-router.get('/test', passport.authenticate('jwt', {
-  session: false,
-}), (req, res) => {
-  res.json({ success: true, message: 'it works !'});
-})
+router.get('/test', Auth.authenticate(), (req, res) => {
+  res.end('ok');
+});
 
 module.exports = router;

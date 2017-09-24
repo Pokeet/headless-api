@@ -3,10 +3,10 @@ import bodyParser from 'body-parser';
 import expressValidator from 'express-validator';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import passport from 'passport';
 
 import config from '../config';
 import routes from './routes';
+import Auth from './middlewares/Auth';
 
 const app = express();
 
@@ -34,9 +34,9 @@ app.use(expressValidator({
   },
 }));
 
-app.use(passport.initialize());
+// initialize auth
 
-config.passport(passport);
+app.use(Auth.init());
 
 // routing
 

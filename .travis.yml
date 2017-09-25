@@ -1,8 +1,10 @@
+sudo: required
 language: node_js
 node_js:
   - "node"
 services: 
   - mongodb
+  - docker
 before_script:
   - mv config-sample.js config.js
 script:

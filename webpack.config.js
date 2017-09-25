@@ -1,5 +1,5 @@
-const path = require('path');
-const nodeExternals = require('webpack-node-externals');
+const path = require('path')
+const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
   target: 'node',
@@ -7,13 +7,13 @@ module.exports = {
   externals: [nodeExternals()],
   output: {
     path: path.resolve(__dirname, 'bin'),
-    filename: 'app.bundle.js',
+    filename: 'app.bundle.js'
   },
   module: {
     loaders: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel-loader',
-    }],
-  },
-};
+      loader: 'babel-loader'
+    }]
+  }
+}

@@ -1,37 +1,37 @@
-import mongoose from 'mongoose';
-import config from '../../config';
+import mongoose from 'mongoose'
+import config from '../../config'
 
-mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise
 
 // connect to db
 
-const uri = `mongodb://${config.dbSettings.host}/${config.dbSettings.name}`;
+const uri = `mongodb://${config.dbSettings.host}/${config.dbSettings.name}`
 
 module.exports = {
   init: function () {
     return new Promise((resolve, reject) => {
       mongoose.connect(uri)
         .then(() => {
-          resolve(mongoose.connection);
+          resolve(mongoose.connection)
         })
         .catch((err) => {
-          reject(err);
-        });
-    });
+          reject(err)
+        })
+    })
   },
 
   close: function () {
     return new Promise((resolve, reject) => {
       mongoose.connection.close()
         .then(() => {
-          mongoose.connection = null;
-          resolve();
+          mongoose.connection = null
+          resolve()
         })
-        .catch(() => reject());
-    });
+        .catch((err) => reject(err))
+    })
   },
 
   getConnection: function () {
-    return mongoose.connection;
-  },
-};
+    return mongoose.connection
+  }
+}

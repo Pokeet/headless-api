@@ -1,10 +1,10 @@
-import chai from 'chai';
-import chaiAsPromised from 'chai-as-promised';
+import chai from 'chai'
+import chaiAsPromised from 'chai-as-promised'
 
-chai.use(chaiAsPromised);
+chai.use(chaiAsPromised)
 
-const should = chai.should();
+const should = chai.should()
 
-process.env.NODE_ENV = 'testing';
+process.env.NODE_ENV = 'testing'
 
-module.exports = should;
+module.exports = should

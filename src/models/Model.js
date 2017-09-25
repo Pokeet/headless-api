@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const { Schema } = mongoose;
+const { Schema } = mongoose
 
 module.exports = new Schema({
   name: String,
@@ -8,14 +8,14 @@ module.exports = new Schema({
   fields: [{
     name: String,
     type: String,
-    description: String,
+    description: String
   }],
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now
   },
   updatedAt: {
     type: Date,
-    default: Date.now,
-  },
-});
+    default: Date.now
+  }
+})

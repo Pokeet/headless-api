@@ -7,7 +7,7 @@ module.exports = {
   externals: [nodeExternals()],
   output: {
     path: path.resolve(__dirname, 'bin'),
-    filename: 'app.bundle.js'
+    filename: 'www'
   },
   module: {
     loaders: [{

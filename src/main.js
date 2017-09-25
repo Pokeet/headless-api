@@ -36,6 +36,13 @@ app.use(`/api/${config.apiVersion}`, routes)
 
 // error handlers
 
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  const err = new Error('Not Found')
+  err.status = 404
+  next(err)
+})
+
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
@@ -58,12 +65,9 @@ app.use((err, req, res) => {
   })
 })
 
-let { port } = config.serverSettings
+let port = process.env.PORT
 
-if (process.env.NODE_ENV === 'testing') {
-  port = config.serverSettings.testingPort
-}
-
+console.log('Listening to port ' + port)
 app.listen(port)
 
 module.exports = app

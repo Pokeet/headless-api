@@ -34,9 +34,10 @@
     "webpack-node-externals": "^1.6.0"
   },
   "scripts": {
-    "start": "nodemon ./src/main.js --exec babel-node",
+    "startDev": "nodemon ./src/main.js --exec babel-node",
     "startDB": "mongod",
     "test": "eslint src/** test/** && mocha --compilers js:babel-core/register -r ./test/initTests.js",
-    "build": "webpack"
+    "build": "webpack",
+    "package": "docker build -t pokeet/headless-api ."
   }
 }

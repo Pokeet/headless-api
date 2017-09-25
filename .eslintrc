@@ -1,6 +1,7 @@
 {
   "extends": "standard",
   "env": {
-    "mocha": true
+    "mocha": true,
+    "node": true
   }
 }

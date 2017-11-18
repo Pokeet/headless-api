@@ -2,5 +2,4 @@ node_modules/
 .vscode/
 bin/
 config.js
-start-db.cmd
 yarn-error.log

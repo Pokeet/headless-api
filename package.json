@@ -34,10 +34,10 @@
     "webpack-node-externals": "^1.6.0"
   },
   "scripts": {
-    "startDev": "nodemon ./src/main.js --exec babel-node",
-    "startDB": "mongod",
+    "startDev": "sudo docker run -i -t -p 3597:3597 -p 27017:27017 -v ~/Workspace/Projets/headless-api:/var/www/headless-api pokeet/headless-api-dev",
     "test": "eslint src/** test/** && mocha --compilers js:babel-core/register -r ./test/initTests.js",
     "build": "webpack",
-    "package": "docker build -t pokeet/headless-api ."
+    "build-prod-image": "docker build -t pokeet/headless-api .",
+    "build-dev-image": "sudo docker build -f Dev.Dockerfile -t pokeet/headless-api-dev ."
   }
 }

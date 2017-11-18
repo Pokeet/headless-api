@@ -27,7 +27,6 @@ app.use(expressValidator({
 }))
 
 // initialize auth
-
 app.use(Auth.init())
 
 // routing
@@ -38,7 +37,7 @@ app.use(`/api/${config.apiVersion}`, routes)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  const err = new Error('Not Found')
+  const err = new Error('Not Found lol')
   err.status = 404
   next(err)
 })

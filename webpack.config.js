@@ -7,7 +7,7 @@ module.exports = {
   externals: [nodeExternals()],
   output: {
     path: path.resolve(__dirname, 'bin'),
-    filename: 'www'
+    filename: 'headless-api'
   },
   module: {
     loaders: [{

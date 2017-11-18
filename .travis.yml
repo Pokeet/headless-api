@@ -6,6 +6,8 @@ services:
   - mongodb
   - docker
 before_script:
+  - sleep 15
+  - mongo admin --eval 'db.addUser({user: "api", pwd:"password", roles: [{role: "readWrite", db: "headlessCMS"}]});'
   - mv config-sample.js config.js
 script:
   - npm run test

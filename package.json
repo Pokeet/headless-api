@@ -18,7 +18,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.2",
-    "babel-preset-latest": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "eslint": "^4.7.2",
@@ -29,15 +29,15 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "mocha": "^3.5.0",
-    "nodemon": "^1.12.0",
     "webpack": "^3.6.0",
     "webpack-node-externals": "^1.6.0"
   },
   "scripts": {
-    "startDev": "sudo docker run -i -t -p 3597:3597 -p 27017:27017 -v ~/Workspace/Projets/headless-api:/var/www/headless-api pokeet/headless-api-dev",
+    "build-dev": "docker build -t pokeet/headless-api-dev -f appDev.Dockerfile .",
+    "build-dev-nocache": "docker build -t pokeet/headless-api-dev -f appDev.Dockerfile --no-cache=true .",
     "test": "eslint src/** test/** && mocha --compilers js:babel-core/register -r ./test/initTests.js",
-    "build": "webpack",
-    "build-prod-image": "docker build -t pokeet/headless-api .",
-    "build-dev-image": "sudo docker build -f Dev.Dockerfile -t pokeet/headless-api-dev ."
+    "up": "docker-compose -f dev.docker-compose.yml up",
+    "down": "docker-compose -f dev.docker-compose.yml down",
+    "clean": "docker-compose -f dev.docker-compose.yml rm"
   }
 }

@@ -32,6 +32,7 @@ module.exports = {
   },
 
   getConnection: function () {
-    return mongoose.connection
+    let connection = mongoose.connection
+    return connection
   }
 }

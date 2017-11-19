@@ -3,13 +3,8 @@ language: node_js
 node_js:
   - "node"
 services: 
-  - mongodb
   - docker
 before_script:
-  - sleep 15
-  - mongo admin --eval 'db.addUser({user: "api", pwd:"password", roles: [{role: "readWrite", db: "headlessCMS"}]});'
-  - mv config-sample.js config.js
+  - npm run up
 script:
   - npm run test
-  - npm run build
-  - npm run package

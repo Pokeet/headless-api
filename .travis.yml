@@ -5,6 +5,8 @@ node_js:
 services: 
   - docker
 before_script:
-  - npm run upAsDaemon
+  - mv config-sample.js config.js
+  - npm run up
+  - sleep 5
 script:
   - npm run test

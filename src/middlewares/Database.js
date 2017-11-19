@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise
 
 // connect to db
 
-const uri = `mongodb://${config.dbSettings.host}/${config.dbSettings.name}`
+const uri = `mongodb://${config.dbSettings.user}:${config.dbSettings.password}@${config.dbSettings.host}/${config.dbSettings.name}`
 
 module.exports = {
   init: function () {

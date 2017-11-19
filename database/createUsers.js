@@ -1,4 +1,6 @@
-db.createUser(
+let adminDB = db.getSiblingDB('admin')
+
+adminDB.createUser(
   {
     user: 'admin',
     pwd: 'GDuS$rYZYW8s?_=wz56_TSQD3EPywdV2',
@@ -10,14 +12,17 @@ db.createUser(
     ]
   }
 )
-db.createUser(
+
+let apiDB = db.getSiblingDB('headless-api')
+
+apiDB.createUser(
   {
     user: 'api',
     pwd: 'Zwk9mtg_d8Kpy5C7J7Dxy+EVq3_RMQuC',
     roles: [
       {
         role: 'readWrite',
-        db: 'headlessCMS'
+        db: 'headless-api'
       }
     ]
   }

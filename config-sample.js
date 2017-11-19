@@ -1,7 +1,7 @@
 module.exports = {
   dbSettings: {
     host: 'mongodb',
-    name: 'headlessCMS',
+    name: 'headless-api',
     user: 'api',
     password: 'password'
   },

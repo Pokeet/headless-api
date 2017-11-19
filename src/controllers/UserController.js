@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
 
     newUser.save((err) => {
       if (err) {
-        return res.json({ success: false, message: 'That email address elready exists.' })
+        return res.json({ success: false, message: err.message })
       }
       res.json({ success: true, message: 'Successfully created new user.' })
     })

@@ -6,7 +6,7 @@ services:
   - docker
 before_script:
   - mv config-sample.js config.js
-  - mv databas/createUsers.sample.js database/createUsers.js
+  - mv database/createUsers.sample.js database/createUsers.js
   - npm run up
   - sleep 5
 script:

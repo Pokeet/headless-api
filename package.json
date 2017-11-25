@@ -33,8 +33,6 @@
     "webpack-node-externals": "^1.6.0"
   },
   "scripts": {
-    "build-dev": "docker build -t pokeet/headless-api-dev -f appDev.Dockerfile .",
-    "build-dev-nocache": "docker build -t pokeet/headless-api-dev -f appDev.Dockerfile --no-cache=true .",
     "test": "docker-compose -f dev.docker-compose.yml exec api bash -c \"node ./node_modules/.bin/eslint src/** test/** && ./node_modules/.bin/mocha --compilers js:babel-core/register -r ./test/initTests.js\"",
     "up": "docker-compose -f dev.docker-compose.yml up -d",
     "down": "docker-compose -f dev.docker-compose.yml down",

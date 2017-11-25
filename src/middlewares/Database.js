@@ -10,7 +10,9 @@ const uri = `mongodb://${config.dbSettings.user}:${config.dbSettings.password}@$
 module.exports = {
   init: function () {
     return new Promise((resolve, reject) => {
-      mongoose.connect(uri)
+      mongoose.connect(uri, {
+        useMongoClient: true
+      })
         .then(() => {
           resolve(mongoose.connection)
         })

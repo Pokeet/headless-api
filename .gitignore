@@ -3,3 +3,4 @@ node_modules/
 bin/
 config.js
 yarn-error.log
+database/createUsers.js

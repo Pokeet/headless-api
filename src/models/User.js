@@ -59,4 +59,10 @@ UserSchema.methods.comparePassword = function (pw, cb) {
   })
 }
 
+UserSchema.methods.toJSON = function () {
+  let user = this.toObject()
+  delete user.password
+  return user
+}
+
 module.exports = mongoose.model('User', UserSchema)

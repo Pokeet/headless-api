@@ -26,7 +26,6 @@ module.exports = {
     return new Promise((resolve, reject) => {
       mongoose.connection.close()
         .then(() => {
-          mongoose.connection = null
           resolve()
         })
         .catch((err) => reject(err))

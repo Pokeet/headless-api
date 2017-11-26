@@ -1,5 +1,5 @@
 import Database from '../src/middlewares/Database'
-import should from './initTests'
+import { should } from './initTests'
 
 describe('database', function () {
   describe('init', function () {
@@ -9,8 +9,8 @@ describe('database', function () {
   })
 
   describe('getConnection', function () {
-    it('should return the databse connection object', function () {
-      return Database.getConnection().should.exist
+    it('should return the databse readyState equal to connected (1)', function () {
+      return should.equal(Database.getConnection().readyState, 1)
     })
   })
 
@@ -21,8 +21,8 @@ describe('database', function () {
   })
 
   describe('getConnection', function () {
-    it('should return null after connection closed', function () {
-      return should.equal(Database.getConnection(), null)
+    it('should return the databse readyState equal to disconnected (0)', function () {
+      return should.equal(Database.getConnection().readyState, 0)
     })
   })
 })

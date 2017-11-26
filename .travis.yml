@@ -8,6 +8,6 @@ before_script:
   - mv config-sample.js config.js
   - mv database/createUsers.sample.js database/createUsers.js
   - npm run up
-  - sleep 5
+  - sleep 15
 script:
   - npm run test

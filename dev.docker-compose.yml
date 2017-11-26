@@ -19,7 +19,7 @@ services:
     volumes:
       - .:/var/www/headless-api/
       - node_modules:/var/www/headless-api/node_modules
-    command: nodemon src/main.js --exec node_modules/.bin/babel-node
+    command: bash -c "sleep 10 && nodemon src/main.js --exec node_modules/.bin/babel-node"
     links:
       - mongodb:mongodb
     depends_on:

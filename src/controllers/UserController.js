@@ -60,36 +60,53 @@ router.post('/', [
   }
 })
 
-router.post('/authenticate', (req, res) => {
-  User.findOne({
-    email: req.body.email
-  }, (err, user) => {
-    if (err) throw err
+router.post('/authenticate', [
+  check('email').exists('is required')
+    .isEmail().withMessage('must be a valid email')
+    .trim()
+    .normalizeEmail(),
+  check('password').exists('is required')
+    .isLength({min: 12})
+],
+(req, res) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    res.status(400).json({
+      errors: errors.array()
+    })
+  } else {
+    User.findOne({
+      email: req.body.email
+    }, (err, user) => {
+      if (err) throw err
 
-    if (!user) {
-      res.send({ success: false, message: 'Authentication failed. User not found.' })
-    } else {
-      user.comparePassword(req.body.password, (err2, isMatch) => {
-        if (isMatch && !err2) {
-          // create the token
-          const token = jwt.sign({ user }, config.appSecret, {
-            expiresIn: 10080
-          })
-          res.status(200).json({
-            data: {
-              token: `JWT ${token}`
-            }
-          })
-        } else {
-          res.status(400).json({
-            errors: [
-              'Authentication failed. Passwords did not match.'
-            ]
-          })
-        }
-      })
-    }
-  })
+      if (!user) {
+        res.status(401).send({
+          errors: [
+            'User does not exist'
+          ]
+        })
+      } else {
+        user.comparePassword(req.body.password, (err2, isMatch) => {
+          if (isMatch && !err2) {
+            // create the token
+            const token = jwt.sign({ user }, config.appSecret)
+            res.status(200).json({
+              data: {
+                token: `JWT ${token}`
+              }
+            })
+          } else {
+            res.status(400).json({
+              errors: [
+                'wrong password'
+              ]
+            })
+          }
+        })
+      }
+    })
+  }
 })
 
 router.get('/test', Auth.authenticate(), (req, res) => {

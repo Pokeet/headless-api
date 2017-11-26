@@ -37,7 +37,7 @@ describe('test user api', () => {
         chai.request(apiBaseUrl)
           .post('/users')
           .end((err, res) => {
-            err.should.not.be.null
+            should.exist(err)
             res.should.have.status(400)
             res.body.errors.should.be.an('array').that.is.not.empty
             done()
@@ -55,7 +55,7 @@ describe('test user api', () => {
             'passwordConfirmation': '012345678901'
           })
           .end((err, res) => {
-            err.should.not.be.null
+            should.exist(err)
             res.should.have.status(400)
             res.body.errors.should.be.an('array').that.is.not.empty
             res.body.errors[0].param.should.equal('email')
@@ -77,6 +77,40 @@ describe('test user api', () => {
             should.not.exist(err)
             res.should.have.status(200)
             should.exist(res.body.data.user)
+            done()
+          })
+      })
+    })
+
+    describe('trying to create user with existing email', () => {
+      it('should return 400 with existing email error', done => {
+        chai.request(apiBaseUrl)
+          .post('/users')
+          .send({
+            'email': 'randomuser@randommail.mail',
+            'password': '012345678901',
+            'passwordConfirmation': '012345678901'
+          })
+          .end((err, res) => {
+            should.exist(err)
+            res.should.have.status(400)
+            res.body.errors.should.be.an('array').that.is.not.empty
+            res.body.errors[0].param.should.equal('email')
+            done()
+          })
+      })
+    })
+  })
+
+  describe('check user authentication', done => {
+    describe('trying to authenticate with no fields', () => {
+      it('should return 400 with errors', done => {
+        chai.request(apiBaseUrl)
+          .post('/users/authenticate')
+          .end((err, res) => {
+            should.exist(err)
+            res.should.have.status(400)
+            res.body.errors.should.be.an('array').that.is.not.empty
             done()
           })
       })

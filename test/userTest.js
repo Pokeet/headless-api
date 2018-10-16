@@ -1,5 +1,5 @@
 import Database from '../src/middlewares/Database'
-import {chai, should} from './initTests'
+import { chai, should, expect } from './initTests'
 import User from '../src/models/User'
 import config from '../config.js'
 
@@ -37,7 +37,7 @@ describe('test user api', () => {
         chai.request(apiBaseUrl)
           .post('/users')
           .end((err, res) => {
-            should.exist(err)
+            expect(err).to.be.null
             res.should.have.status(400)
             res.body.errors.should.be.an('array').that.is.not.empty
             done()
@@ -55,7 +55,7 @@ describe('test user api', () => {
             'passwordConfirmation': '012345678901'
           })
           .end((err, res) => {
-            should.exist(err)
+            expect(err).to.be.null
             res.should.have.status(400)
             res.body.errors.should.be.an('array').that.is.not.empty
             res.body.errors[0].param.should.equal('email')
@@ -74,7 +74,7 @@ describe('test user api', () => {
             'passwordConfirmation': '012345678901'
           })
           .end((err, res) => {
-            should.not.exist(err)
+            expect(err).to.be.null
             res.should.have.status(200)
             should.exist(res.body.data.user)
             done()
@@ -92,7 +92,7 @@ describe('test user api', () => {
             'passwordConfirmation': '012345678901'
           })
           .end((err, res) => {
-            should.exist(err)
+            expect(err).to.be.null
             res.should.have.status(400)
             res.body.errors.should.be.an('array').that.is.not.empty
             res.body.errors[0].param.should.equal('email')
@@ -108,7 +108,7 @@ describe('test user api', () => {
         chai.request(apiBaseUrl)
           .post('/users/authenticate')
           .end((err, res) => {
-            should.exist(err)
+            expect(err).to.be.null
             res.should.have.status(400)
             res.body.errors.should.be.an('array').that.is.not.empty
             done()

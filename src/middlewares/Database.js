@@ -11,7 +11,7 @@ module.exports = {
   init: function () {
     return new Promise((resolve, reject) => {
       mongoose.connect(uri, {
-        useMongoClient: true
+        useNewUrlParser: true
       })
         .then(() => {
           resolve(mongoose.connection)

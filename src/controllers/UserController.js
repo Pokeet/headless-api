@@ -6,7 +6,7 @@ import User from '../models/User'
 
 import Auth from '../middlewares/Auth'
 
-import {check, validationResult} from 'express-validator/check'
+import { check, validationResult } from 'express-validator/check'
 
 const router = express.Router()
 
@@ -17,7 +17,7 @@ router.post('/', [
     .normalizeEmail()
     .custom(value => {
       return new Promise((resolve, reject) => {
-        User.findOne({email: value}, 'email', (err, user) => {
+        User.findOne({ email: value }, 'email', (err, user) => {
           console.log(user)
           if (err) {
             console.error(err.message)
@@ -32,9 +32,9 @@ router.post('/', [
       })
     }),
   check('password').exists()
-    .isLength({min: 12}),
+    .isLength({ min: 12 }),
   check('passwordConfirmation', 'passwordConfirmation must be the same as password').exists()
-    .custom((value, {req}) => value === req.body.password)
+    .custom((value, { req }) => value === req.body.password)
 ],
 (req, res) => {
   const errors = validationResult(req)
@@ -66,7 +66,7 @@ router.post('/authenticate', [
     .trim()
     .normalizeEmail(),
   check('password').exists('is required')
-    .isLength({min: 12})
+    .isLength({ min: 12 })
 ],
 (req, res) => {
   const errors = validationResult(req)

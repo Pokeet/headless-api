@@ -1,13 +1,9 @@
-sudo: required
 language: node_js
 node_js:
   - "node"
 services: 
   - docker
 before_script:
-  - mv config-sample.js config.js
-  - mv database/createUsers.sample.js database/createUsers.js
   - npm run up
-  - sleep 30
 script:
   - npm run test

@@ -29,7 +29,6 @@ services:
       - '2560:2560'
     links:
       - mongo
-    entrypoint: /docker-entrypoint-init.d/docker-entrypoint.dev.sh
     volumes:
       - ./docker-init:/docker-entrypoint-init.d/
       - ./src:/usr/src/headless-api/src

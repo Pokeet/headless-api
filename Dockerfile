@@ -23,4 +23,7 @@ RUN npm install --quiet
 
 COPY . .
 
+ENTRYPOINT ["./docker-entrypoint.sh"]
+RUN chmod 777 ./docker-entrypoint.sh
+
 EXPOSE ${PORT}

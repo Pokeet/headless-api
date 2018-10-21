@@ -5,4 +5,10 @@ do
   sleep 1
 done
 echo mongo ready!
-npm run startDev
+
+if [$NODE_ENV = "development"]
+then
+  npm run startDev
+else
+  npm start
+fi

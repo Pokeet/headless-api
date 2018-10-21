@@ -1,5 +1,18 @@
 version: '3'
 services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root # change those in production !
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=headless-api
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d/
+
   api:
     container_name: headless-api-container
     restart: always
@@ -16,21 +29,10 @@ services:
       - '2560:2560'
     links:
       - mongo
-    command: npm run startDev
+    entrypoint: /docker-entrypoint-init.d/docker-entrypoint.dev.sh
     volumes:
+      - ./docker-init:/docker-entrypoint-init.d/
       - ./src:/usr/src/headless-api/src
       - ./test:/usr/src/headless-api/test
     depends_on:
       - mongo
-  mongo:
-    container_name: mongo
-    image: mongo
-    restart: always
-    ports:
-      - '27017:27017'
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root # change those in production !
-      - MONGO_INITDB_ROOT_PASSWORD=password
-      - MONGO_INITDB_DATABASE=headless-api
-    volumes:
-      - ./db-init:/docker-entrypoint-initdb.d/

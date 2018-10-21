@@ -9,9 +9,14 @@ ENV MONGO_PASSWORD password
 ENV MONGO_DB_NAME headless-api
 ENV MONGO_HOST mongo
 
+ENV API_SECRET defaultSecretToChange
+ENV API_VERSION 1
+
 WORKDIR ${APP_DIR}
 
 COPY package*.json ./
+
+RUN apt-get update && apt-get -y install netcat && apt-get clean
 
 RUN npm install -g nodemon --quiet
 RUN npm install --quiet

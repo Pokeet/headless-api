@@ -1,6 +1,4 @@
 node_modules/
 .vscode/
 bin/
-config.js
 yarn-error.log
-database/createUsers.js

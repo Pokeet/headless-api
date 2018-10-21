@@ -1,7 +1,6 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
 
-const config = require('../../config')
 const User = require('../models/User')
 
 const Auth = require('../middlewares/Auth')
@@ -11,6 +10,8 @@ const ExpressValidator = require('express-validator/check')
 const { check, validationResult } = ExpressValidator
 
 const router = express.Router()
+
+const API_SECRET = process.env.API_SECRET
 
 router.post('/', [
   check('email').exists('is required')
@@ -92,7 +93,7 @@ router.post('/authenticate', [
         user.comparePassword(req.body.password, (err2, isMatch) => {
           if (isMatch && !err2) {
             // create the token
-            const token = jwt.sign({ user }, config.appSecret)
+            const token = jwt.sign({ user }, API_SECRET)
             res.status(200).json({
               data: {
                 token: `JWT ${token}`

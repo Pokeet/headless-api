@@ -3,13 +3,13 @@ const passportJWT = require('passport-jwt')
 
 const User = require('../models/User')
 
-const config = require('../../config')
-
 const { Strategy } = passportJWT
 const { ExtractJwt } = passportJWT
 
+const API_SECRET = process.env.API_SECRET
+
 const params = {
-  secretOrKey: config.appSecret,
+  secretOrKey: API_SECRET,
   jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('JWT')
 }
 
@@ -37,7 +37,7 @@ module.exports = {
 
   authenticate: function () {
     return passport.authenticate('jwt', {
-      session: config.jwtSession
+      session: false
     })
   }
 

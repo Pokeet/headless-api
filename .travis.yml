@@ -3,7 +3,12 @@ node_js:
   - "node"
 services: 
   - docker
+before_install:
+  - docker-compose -f docker-compose.dev.yml pull
+  - docker-compose -f docker-compose.dev.yml build
 before_script:
   - npm run up
+  - sleep 10
 script:
-  - npm run test
+  - npm test
+  - npm run down

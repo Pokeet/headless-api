@@ -4,12 +4,13 @@ const expressValidator = require('express-validator')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
-const config = require('../config')
 const routes = require('./routes')
 const Auth = require('./middlewares/Auth')
 const Database = require('./middlewares/Database')
 
 const app = express()
+
+const API_VERSION = process.env.API_VERSION
 
 // database init
 
@@ -32,7 +33,7 @@ app.use(Auth.init())
 
 // routing
 
-app.use(`/api/${config.apiVersion}`, routes)
+app.use(`/api/${API_VERSION}`, routes)
 
 // error handlers
 

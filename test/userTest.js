@@ -1,11 +1,11 @@
 const Database = require('../src/middlewares/Database')
 const { chai, should, expect } = require('./initTests')
 const User = require('../src/models/User')
-const config = require('../config.js')
 
 const PORT = process.env.PORT
+const API_VERSION = process.env.API_VERSION
 
-const apiBaseUrl = `localhost:${PORT}/api/${config.apiVersion}`
+const apiBaseUrl = `localhost:${PORT}/api/${API_VERSION}`
 
 describe('test user api', () => {
   // Connect to DB

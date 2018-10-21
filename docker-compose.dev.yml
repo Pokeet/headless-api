@@ -1,0 +1,36 @@
+version: '3'
+services:
+  api:
+    container_name: headless-api-container
+    restart: always
+    build: .
+    environment:
+      - NODE_ENV=development 
+      - PORT=2560
+      - APP_NAME=headless-api
+      - MONGO_USER_NAME=api # change those in production !
+      - MONGO_PASSWORD=password
+      - MONGO_DB_NAME=headless-api
+      - MONGO_HOST=mongo
+    ports:
+      - '2560:2560'
+    links:
+      - mongo
+    command: npm run startDev
+    volumes:
+      - ./src:/usr/src/headless-api/src
+      - ./test:/usr/src/headless-api/test
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root # change those in production !
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=headless-api
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d/

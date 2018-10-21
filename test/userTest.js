@@ -1,9 +1,11 @@
-import Database from '../src/middlewares/Database'
-import { chai, should, expect } from './initTests'
-import User from '../src/models/User'
-import config from '../config.js'
+const Database = require('../src/middlewares/Database')
+const { chai, should, expect } = require('./initTests')
+const User = require('../src/models/User')
+const config = require('../config.js')
 
-const apiBaseUrl = 'localhost:3000/api/' + config.apiVersion
+const PORT = process.env.PORT
+
+const apiBaseUrl = `localhost:${PORT}/api/${config.apiVersion}`
 
 describe('test user api', () => {
   // Connect to DB

@@ -4,6 +4,7 @@
   "description": "a headless cms",
   "author": "TBAUDON <thomas.baudon@pokeet.fr>",
   "license": "MIT",
+  "main": "src/main.js",
   "dependencies": {
     "bcrypt": "3.0.0",
     "body-parser": "^1.18.3",
@@ -16,10 +17,6 @@
     "passport-jwt": "^4.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^8.0.4",
-    "babel-preset-env": "^1.7.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "chai-http": "^4.2.0",
@@ -30,17 +27,18 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "mocha": "^5.2.0",
-    "webpack": "^4.20.2",
-    "webpack-node-externals": "^1.7.2"
+    "mocha": "^5.2.0"
   },
   "scripts": {
-    "test": "docker-compose -f dev.docker-compose.yml exec api bash -c \"node ./node_modules/.bin/eslint src/** test/** && ./node_modules/.bin/mocha --require babel-core/register -r ./test/initTests.js\"",
-    "fixLint": "docker-compose -f dev.docker-compose.yml exec api bash -c \"node ./node_modules/.bin/eslint src/** test/** --fix\"",
-    "up": "docker-compose -f dev.docker-compose.yml up -d",
-    "down": "docker-compose -f dev.docker-compose.yml down",
-    "logs": "docker-compose -f dev.docker-compose.yml logs --follow api",
-    "clean": "docker-compose -f dev.docker-compose.yml rm",
-    "apiShell": "docker-compose -f dev.docker-compose.yml exec api bash"
+    "start": "node src/main.js",
+    "startDev": "nodemon src/main.js",
+    "test": "docker-compose -f docker-compose.dev.yml exec api bash -c \"node ./node_modules/.bin/eslint src/** test/** && ./node_modules/.bin/mocha -r ./test/initTests.js\"",
+    "fixLint": "docker-compose -f docker-compose.dev.yml exec api bash -c \"node ./node_modules/.bin/eslint src/** test/** --fix\"",
+    "up": "docker-compose -f docker-compose.dev.yml up -d",
+    "down": "docker-compose -f docker-compose.dev.yml down",
+    "logApi": "docker-compose -f docker-compose.dev.yml logs --follow api",
+    "logMongo": "docker-compose -f docker-compose.dev.yml logs --follow mongo",
+    "clean": "docker-compose -f docker-compose.dev.yml rm",
+    "apiShell": "docker-compose -f docker-compose.dev.yml exec api bash"
   }
 }

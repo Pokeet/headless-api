@@ -1,5 +1,5 @@
-import Database from '../src/middlewares/Database'
-import { should } from './initTests'
+const Database = require('../src/middlewares/Database')
+const { should } = require('./initTests')
 
 describe('database', function () {
   describe('init', function () {

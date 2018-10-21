@@ -1,9 +1,9 @@
-import passport from 'passport'
-import passportJWT from 'passport-jwt'
+const passport = require('passport')
+const passportJWT = require('passport-jwt')
 
-import User from '../models/User'
+const User = require('../models/User')
 
-import config from '../../config'
+const config = require('../../config')
 
 const { Strategy } = passportJWT
 const { ExtractJwt } = passportJWT

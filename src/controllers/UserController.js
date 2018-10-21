@@ -1,12 +1,14 @@
-import express from 'express'
-import jwt from 'jsonwebtoken'
+const express = require('express')
+const jwt = require('jsonwebtoken')
 
-import config from '../../config'
-import User from '../models/User'
+const config = require('../../config')
+const User = require('../models/User')
 
-import Auth from '../middlewares/Auth'
+const Auth = require('../middlewares/Auth')
 
-import { check, validationResult } from 'express-validator/check'
+const ExpressValidator = require('express-validator/check')
+
+const { check, validationResult } = ExpressValidator
 
 const router = express.Router()
 

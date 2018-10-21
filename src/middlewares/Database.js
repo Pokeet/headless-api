@@ -1,11 +1,15 @@
-import mongoose from 'mongoose'
-import config from '../../config'
+const mongoose = require('mongoose')
 
 mongoose.Promise = global.Promise
 
 // connect to db
 
-const uri = `mongodb://${config.dbSettings.user}:${config.dbSettings.password}@${config.dbSettings.host}/${config.dbSettings.name}`
+const mongoUser = process.env.MONGO_USER_NAME
+const mongoPassword = process.env.MONGO_PASSWORD
+const mongoHost = process.env.MONGO_HOST
+const mongoDbName = process.env.MONGO_DB_NAME
+
+const uri = `mongodb://${mongoUser}:${mongoPassword}@${mongoHost}/${mongoDbName}`
 
 module.exports = {
   init: function () {

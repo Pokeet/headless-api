@@ -1,12 +1,13 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import expressValidator from 'express-validator'
-import cors from 'cors'
+const express = require('express')
+const expressValidator = require('express-validator')
 
-import config from '../config'
-import routes from './routes'
-import Auth from './middlewares/Auth'
-import Database from './middlewares/Database'
+const bodyParser = require('body-parser')
+const cors = require('cors')
+
+const config = require('../config')
+const routes = require('./routes')
+const Auth = require('./middlewares/Auth')
+const Database = require('./middlewares/Database')
 
 const app = express()
 

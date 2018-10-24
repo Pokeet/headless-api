@@ -1,11 +1,7 @@
-const Database = require('../src/middlewares/Database')
-const { chai, should, expect } = require('./initTests')
+const TestCommon = require('./initTests')
+const { chai, should, expect, apiBaseUrl, Database } = TestCommon
+
 const User = require('../src/models/User')
-
-const PORT = process.env.PORT
-const API_VERSION = process.env.API_VERSION
-
-const apiBaseUrl = `localhost:${PORT}/api/${API_VERSION}`
 
 describe('test user api', () => {
   // Connect to DB
@@ -16,14 +12,14 @@ describe('test user api', () => {
       if (err) {
         console.error('Error when intiailising DB connection : ' + err.message)
       }
-      done()
+      done(err)
     })
   })
 
   // Close db
   after(done => {
     // clean users
-    User.remove({}, (err, removed) => {
+    User.deleteOne({ email: 'randomuser@randommail.mail' }, (err, removed) => {
       if (err) {
         console.error('error clearing users for tests')
       }
@@ -113,6 +109,23 @@ describe('test user api', () => {
             expect(err).to.be.null
             res.should.have.status(400)
             res.body.errors.should.be.an('array').that.is.not.empty
+            done()
+          })
+      })
+    })
+
+    describe('trying to authenticate with correct fields', () => {
+      it('should return 200 with api key', done => {
+        chai.request(apiBaseUrl)
+          .post('/users/authenticate')
+          .send({
+            'email': 'randomuser@randommail.mail',
+            'password': '012345678901'
+          })
+          .end((err, res) => {
+            expect(err).to.be.null
+            res.should.have.status(200)
+            res.body.data.token.should.be.a('string').that.is.not.empty
             done()
           })
       })

@@ -33,6 +33,7 @@
     "start": "node src/main.js",
     "startDev": "nodemon src/main.js",
     "test": "docker-compose -f docker-compose.dev.yml exec api bash -c \"node ./node_modules/.bin/eslint src/** test/** && ./node_modules/.bin/mocha -r ./test/initTests.js\"",
+    "testFix": "docker-compose -f docker-compose.dev.yml exec api bash -c \"node ./node_modules/.bin/eslint src/** test/** --fix && ./node_modules/.bin/mocha\"",
     "fixLint": "docker-compose -f docker-compose.dev.yml exec api bash -c \"node ./node_modules/.bin/eslint src/** test/** --fix\"",
     "up": "docker-compose -f docker-compose.dev.yml up -d",
     "down": "docker-compose -f docker-compose.dev.yml down",

@@ -2,10 +2,19 @@ const mongoose = require('mongoose')
 
 const { Schema } = mongoose
 
-module.exports = new Schema({
-  name: String,
+const ApplicationSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
   description: String,
-  appID: String,
+  users: {
+    type: [{
+      userId: Schema.Types.ObjectId,
+      role: String
+    }],
+    required: true
+  },
   createdAt: {
     type: Date,
     default: Date.now
@@ -15,3 +24,5 @@ module.exports = new Schema({
     default: Date.now
   }
 })
+
+module.exports = mongoose.model('Application', ApplicationSchema)

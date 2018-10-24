@@ -96,13 +96,13 @@ router.post('/authenticate', [
             const token = jwt.sign({ user }, API_SECRET)
             res.status(200).json({
               data: {
-                token: `JWT ${token}`
+                token
               }
             })
           } else {
             res.status(400).json({
               errors: [
-                'wrong password'
+                'wrong email or password'
               ]
             })
           }

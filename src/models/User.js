@@ -14,11 +14,6 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  role: {
-    type: String,
-    enume: ['Client', 'Manager', 'Admin'],
-    default: 'Client'
-  },
   createdAt: {
     type: Date,
     default: Date.now
